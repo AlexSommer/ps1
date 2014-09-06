@@ -26,10 +26,10 @@ TEST_UNIT "is_unimodal_test8" = assert_true (is_unimodal [1;3;2])
 TEST_UNIT "is_unimodal_test9" = assert_true (is_unimodal [1;1;1])
 TEST_UNIT "is_unimodal_test10" = assert_true (is_unimodal [1;2;9;0])
 (* new tests *)
-TEST_UNIT "is_unimodal_test11" = assert_true  (is_unimodal [1;2;3;3;2;0])
+TEST_UNIT "is_unimodal_test11" = assert_true  (is_unimodal [1;2;3;3;2;2;0;0;-10])
 TEST_UNIT "is_unimodal_test12" = assert_false (is_unimodal [1;2;1;2])
 TEST_UNIT "is_unimodal_test13" = assert_true (is_unimodal [0;1;0])
-TEST_UNIT "is_unimodal_test14" = assert_false (is_unimodal [1;2;3;3;2;1;2;2])
+TEST_UNIT "is_unimodal_test14" = assert_false (is_unimodal [1;2;3;3;2;1;2;2;-1])
 
 
 
