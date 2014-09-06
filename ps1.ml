@@ -4,4 +4,4 @@ let rec is_mon_inc (list:int list):bool =
 	| [x] -> true 
 	| h::h2::t -> if h <= h2 then is_mon_inc(h2::t) else false
 
-	(*hello*)
+	(*try # 2*)
