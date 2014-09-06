@@ -37,17 +37,13 @@ TEST_UNIT "is_unimodal_test14" = assert_false (is_unimodal [1;2;3;3;2;1;2;2;-1])
 
 (*Tests for rev_int*)
 TEST_UNIT "rev_int_test1" = assert_true ((rev_int 1234) = 4321)
-TEST_UNIT "rev_int_test2" = 
-	(* let () = print_int (rev_int (-1234)) in *)
-	assert_true ((rev_int (-1234)) = (-4321))
+TEST_UNIT "rev_int_test2" = assert_true ((rev_int (-1234)) = (-4321))
 TEST_UNIT "rev_int_test3" = assert_true ((rev_int 0) = 0)
-TEST_UNIT "rev_int_test5" = 
-	(* let () = print_int (rev_int (-10)) in *)
-	assert_true ((rev_int (-10)) = (-1))
+TEST_UNIT "rev_int_test5" = assert_true ((rev_int (-10)) = (-1))
 TEST_UNIT "rev_int_test6" = assert_true ((rev_int 11111) = 11111)
 TEST_UNIT "rev_int_test7" = assert_true ((rev_int 4) = 4)
 
-let () = print_int (rev_int 1073741823)
+
 
 (* 
 TEST_UNIT "rev_int_test8" = assert_true ((rev_int 1234) = 4321)
@@ -56,6 +52,7 @@ TEST_UNIT "rev_int_test10" = assert_true ((rev_int 1234) = 4321)
 TEST_UNIT "rev_int_test11" = assert_true ((rev_int 1234) = 4321)
 TEST_UNIT "rev_int_test12" = assert_true ((rev_int 1234) = 4321)
  *)
+
 
 
 

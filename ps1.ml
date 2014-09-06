@@ -18,7 +18,9 @@ let rec is_unimodal (list : int list) : bool =
 	| [x] -> true
 	| h::h2::t -> if h <= h2 then is_unimodal(h2::t) else is_mon_dec(h2::t)
 
+
 (* PLACE HOLDER FOR POWERSET FUNCTION*)
+
 
 
 let rec power (base : int) (raised : int) : int =
@@ -28,5 +30,8 @@ let rec rev_int (value : int) : int =
 	if value = 0 then 0 else 
 		let first = value mod 10 in
 		let len = length (string_of_int (abs (value))) in
-		first * (power 10 (len-1)) + (rev_int (value / 10))
+		(first * (power 10 (len-1))) + (rev_int (value / 10))
+
+
+
 	
