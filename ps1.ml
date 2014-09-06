@@ -18,8 +18,18 @@ let rec is_unimodal (list : int list) : bool =
 	| [x] -> true
 	| h::h2::t -> if h <= h2 then is_unimodal(h2::t) else is_mon_dec(h2::t)
 
+let rec concatEls (x : int) (pset: int list list) : int list list =
+	match pset with 
+	| [] -> [[x]]
+	| [y] -> [x::y]
+	| h::t -> (x::h) :: (concatEls x t )
 
-(* PLACE HOLDER FOR POWERSET FUNCTION*)
+let rec powerset (list: int list): int list list = 
+	match list with
+	| [] -> [[]]
+	| h::t -> powerset(t) @ (concatEls h (powerset(t)))
+
+
 
 
 
