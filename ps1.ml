@@ -40,52 +40,37 @@ let rec rev_int (value : int) : int =
 		(first * (power 10 (len-1))) + (rev_int (value / 10))
 
 
-
-
-
-
-
-
-
-
+					
 let rec insert_at_end (lst) (num) =
   match lst with
   | [] -> [num]
   | h :: t -> h :: (insert_at_end t num)
 
-let rec buildSubset k lst temp =
+let rec buildSubset (k: int) (lst : 'a list)  (temp : 'a list) : 'a list * 'a list =
 	match lst with
 	| [] -> ([],[]) (*is this correct??*)
 	| h :: t -> 
-		let () = print_newline () in
-		let () = print_string "h value" in
-		let () = print_newline () in
-		let () = print_int h in
-		let () = print_newline () in
-		let () = print_string "k value" in
-		let () = print_newline () in
-		let () = print_int k in
-
 		let result = 
 			if (k>1) then (buildSubset (k-1) (t) (insert_at_end temp h)) else
 			((insert_at_end temp h) , t)
 		in result
 
-let rec between steps second third =
-	let (done,todo) = (buildSubset steps third []) in
-	if (second > 0) then (between steps (second-1) todo) else
-		(done @ todo)
 
-
-
-let rec unflatten (k:int) (lst) : 'a list list option =
-	if k<=0 then None 
-	if (List.length lst) <= k then Some [lst]
-	else 
-		match lst with
-		| [] -> Some [[]]
-		| [x] -> Some [[x]]
-		| _ -> let (x,y) = [(between k ((List.length lst)/k) lst)] 
-				in x@y
-					
-
+let rec unflatten (k : int) (l : 'a list) : 'a list list option = 
+	if (k = 0 ) then None else
+	match l with 
+	| [] -> Some []
+	| [x] -> Some [[x]]
+	| _ -> 
+			if (List.length l <= k) then Some [l]
+		else 
+			let (x, y) = buildSubset k l [] in
+			if (List.length y) > k then 
+				let rest = 
+					match unflatten k y with
+					None -> []
+					| Some c -> c  in
+				Some ( x :: rest)
+			else Some ( [x] @ [y] ) 
+		 
+	
