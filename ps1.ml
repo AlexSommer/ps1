@@ -30,9 +30,6 @@ let rec powerset (list: int list): int list list =
 	| h::t -> powerset(t) @ (concatEls h (powerset(t)))
 
 
-
-
-
 let rec power (base : int) (raised : int) : int =
 	if raised <= 0 then 1 else base * (power base (raised-1))
 
@@ -44,4 +41,51 @@ let rec rev_int (value : int) : int =
 
 
 
-	
+
+
+
+
+
+
+
+let rec insert_at_end (lst) (num) =
+  match lst with
+  | [] -> [num]
+  | h :: t -> h :: (insert_at_end t num)
+
+let rec buildSubset k lst temp =
+	match lst with
+	| [] -> ([],[]) (*is this correct??*)
+	| h :: t -> 
+		let () = print_newline () in
+		let () = print_string "h value" in
+		let () = print_newline () in
+		let () = print_int h in
+		let () = print_newline () in
+		let () = print_string "k value" in
+		let () = print_newline () in
+		let () = print_int k in
+
+		let result = 
+			if (k>1) then (buildSubset (k-1) (t) (insert_at_end temp h)) else
+			((insert_at_end temp h) , t)
+		in result
+
+let rec between steps second third =
+	let (done,todo) = (buildSubset steps third []) in
+	if (second > 0) then (between steps (second-1) todo) else
+		(done @ todo)
+
+
+
+let rec unflatten (k:int) (lst) : 'a list list option =
+	if k<=0 then None 
+	if (List.length lst) <= k then Some [lst]
+	else 
+		match lst with
+		| [] -> Some [[]]
+		| [x] -> Some [[x]]
+		| _ -> let (x,y) = [(between k ((List.length lst)/k) lst)] 
+				in x@y
+					
+
