@@ -78,7 +78,13 @@ TEST_UNIT "unflatten_test8" =
 TEST_UNIT "unflatten_test9" = 
 	assert_true ((unflatten 7 [1;2;3;4;5;6]) = (Some [[1;2;3;4;5;6]]))
 
+(* ---------------------------------------------------- *)
 
+(* Tests for int_of_roman *)
+TEST_UNIT "int_of_roman_test1" = assert_true ((int_of_roman [I;I;I])=3)
+TEST_UNIT "int_of_roman_test1" = assert_true ((int_of_roman [X;L;I;I])=42)
+TEST_UNIT "int_of_roman_test1" = 
+	assert_true ((int_of_roman [M;C;M;X;C;I;X])=1999)
 
 
 
