@@ -41,18 +41,20 @@ let rec rev_int (value : int) : int =
 
 
 					
-let rec insert_at_end (lst) (num) =
+(* let rec insert_at_end (lst) (num) =
   match lst with
   | [] -> [num]
-  | h :: t -> h :: (insert_at_end t num)
+  | h :: t -> h :: (insert_at_end t num) *)
+
+(*instead of insert_at_end just use @ *)
 
 let rec buildSubset (k: int) (lst : 'a list)  (temp : 'a list) : 'a list * 'a list =
 	match lst with
 	| [] -> ([],[]) (* will never be called *)
 	| h :: t -> 
 		let result = 
-			if (k>1) then (buildSubset (k-1) (t) (insert_at_end temp h)) else
-			((insert_at_end temp h) , t)
+			if (k>1) then (buildSubset (k-1) (t) (temp @ [h])) else
+			((temp @ [h]) , t)
 		in result
 
 (* with corrections *)
