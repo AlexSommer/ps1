@@ -55,22 +55,18 @@ let rec buildSubset (k: int) (lst : 'a list)  (temp : 'a list) : 'a list * 'a li
 			((insert_at_end temp h) , t)
 		in result
 
-
+(* with corrections *)
 let rec unflatten (k : int) (l : 'a list) : 'a list list option = 
-	if (k = 0 ) then None else
-	match l with 
-	| [] -> Some []
-	| [x] -> Some [[x]]
-	| _ -> 
-			if (List.length l <= k) then Some [l]
+	if (k <= 0) then None
+	else if (List.length l <= k) then Some [l] 
+	else 
+		let (x, y) = (buildSubset k l []) in
+		if ((List.length y) > k) then 
+			let rest = match (unflatten k y) with
+				| None -> [[]]
+				| Some c -> c  in	
+			Some ( x :: rest)
 		else 
-			let (x, y) = buildSubset k l [] in
-			if (List.length y) > k then 
-				let rest = 
-					match unflatten k y with
-					None -> []
-					| Some c -> c  in
-				Some ( x :: rest)
-			else Some ( [x] @ [y] ) 
+			Some ( [x] @ [y] ) 
 		 
 	
