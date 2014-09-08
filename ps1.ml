@@ -48,7 +48,7 @@ let rec insert_at_end (lst) (num) =
 
 let rec buildSubset (k: int) (lst : 'a list)  (temp : 'a list) : 'a list * 'a list =
 	match lst with
-	| [] -> ([],[]) (*is this correct??*)
+	| [] -> ([],[]) (* will never be called *)
 	| h :: t -> 
 		let result = 
 			if (k>1) then (buildSubset (k-1) (t) (insert_at_end temp h)) else
