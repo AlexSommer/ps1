@@ -51,7 +51,8 @@ TEST_UNIT "powerset_test2" = assert_true (powerset[1] = [[];[1]])
 TEST_UNIT "powerset_test3" = 
 	assert_true (powerset[1;2] = [[]; [2]; [1]; [1;2]])
 TEST_UNIT "powerset_test4" = 
-	assert_true (powerset[1;2;3] = [[];[3];[2];[2;3];[1];[1;3];[1;2];[1;2;3]])
+	assert_true (powerset[1;2;3] = 
+	[[];[3];[2];[2;3];[1];[1;3];[1;2];[1;2;3]])
 
 (* ---------------------------------------------------- *)
 
@@ -72,7 +73,8 @@ TEST_UNIT "unflatten_test6" =
 	assert_true ((unflatten 4 []) = (Some [[]]))
 
 TEST_UNIT "unflatten_test7" = 
-	assert_true ((unflatten 3 [1;2;3;4;5;6;7;8]) = (Some [[1;2;3]; [4;5;6]; [7;8]]))
+	assert_true ((unflatten 3 [1;2;3;4;5;6;7;8]) = 
+		(Some [[1;2;3]; [4;5;6]; [7;8]]))
 TEST_UNIT "unflatten_test8" = 
 	assert_true ((unflatten 6 [1;2;3;4;5;6]) = (Some [[1;2;3;4;5;6]]))
 TEST_UNIT "unflatten_test9" = 
@@ -81,16 +83,33 @@ TEST_UNIT "unflatten_test9" =
 (* ---------------------------------------------------- *)
 
 (* Tests for int_of_roman *)
-TEST_UNIT "int_of_roman_test1" = assert_true ((int_of_roman [I;I;I])=3)
-TEST_UNIT "int_of_roman_test1" = assert_true ((int_of_roman [X;L;I;I])=42)
 TEST_UNIT "int_of_roman_test1" = 
+	assert_true ((int_of_roman [I;I;I])=3)
+TEST_UNIT "int_of_roman_test2" = 
+	assert_true ((int_of_roman [X;L;I;I])=42)
+TEST_UNIT "int_of_roman_test3" = 
 	assert_true ((int_of_roman [M;C;M;X;C;I;X])=1999)
+TEST_UNIT "int_of_roman_test4" = 
+	assert_true ((int_of_roman [M;M;M;C;X])=3110)
+TEST_UNIT "int_of_roman_test5" = 
+	assert_true ((int_of_roman [])=0)
+TEST_UNIT "int_of_roman_test6" = 
+	assert_true ((int_of_roman [V])=5)
+TEST_UNIT "int_of_roman_test7" = 
+	assert_true ((int_of_roman [I;I])=2)
+TEST_UNIT "int_of_roman_test7" = 
+	assert_true ((int_of_roman [I;I;V])=5)
+TEST_UNIT "int_of_roman_test7" = 
+	assert_true ((int_of_roman [I;V])=4)
+TEST_UNIT "int_of_roman_test7" = 
+	assert_true ((int_of_roman [I;C])=99)
+TEST_UNIT "int_of_roman_test7" = 
+	assert_true ((int_of_roman [M;C])=1100)
+TEST_UNIT "int_of_roman_test7" = 
+	assert_true ((int_of_roman [C;M;L;C])=950)
+TEST_UNIT "int_of_roman_test7" = 
+	assert_true ((int_of_roman [C;M;L])=950)
 
 
-
-
-
-
-
-
+(* Summary statement for unit tests being run *)
 let () = Pa_ounit_lib.Runtime.summarize()

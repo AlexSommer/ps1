@@ -88,7 +88,9 @@ let rec int_of_roman ( r : roman ) : int =
 		| C -> 100
 		| D -> 500
 		| M -> 1000 in
-
-	???
-
-
+	match r with
+	| [] -> 0
+	| [x] -> int_of_numeral x
+	| h1 :: h2 :: tl -> if (int_of_numeral h1)>=(int_of_numeral h2) then
+	(int_of_numeral h1) + (int_of_roman (h2::tl)) else
+	~-(int_of_numeral h1) + (int_of_roman (h2::tl))
