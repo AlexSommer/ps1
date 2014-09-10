@@ -46,13 +46,13 @@ TEST_UNIT "rev_int_test7" = assert_true ((rev_int 4) = 4)
 (* ---------------------------------------------------- *)
 
 (* Tests for powerset *)
-TEST_UNIT "powerset_test1" = assert_true (powerset[] = [[]])
-TEST_UNIT "powerset_test2" = assert_true (powerset[1] = [[];[1]])
+TEST_UNIT "powerset_test1" = assert_true ((powerset []) = ([[]]))
+TEST_UNIT "powerset_test2" = assert_true ((powerset [1]) = ([[];[1]]))
 TEST_UNIT "powerset_test3" = 
-	assert_true (powerset[1;2] = [[]; [2]; [1]; [1;2]])
+	assert_true ((powerset [1;2]) = ([[]; [2]; [1]; [1;2]]))
 TEST_UNIT "powerset_test4" = 
-	assert_true (powerset[1;2;3] = 
-	[[];[3];[2];[2;3];[1];[1;3];[1;2];[1;2;3]])
+	assert_true ((powerset [1;2;3]) = 
+		([[];[3];[2];[2;3];[1];[1;3];[1;2];[1;2;3]]))
 
 (* ---------------------------------------------------- *)
 
