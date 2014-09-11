@@ -71,7 +71,6 @@ TEST_UNIT "unflatten_test6" =
 	assert_true ((unflatten 0 []) = None)	
 TEST_UNIT "unflatten_test6" = 
 	assert_true ((unflatten 4 []) = (Some [[]]))
-
 TEST_UNIT "unflatten_test7" = 
 	assert_true ((unflatten 3 [1;2;3;4;5;6;7;8]) = 
 		(Some [[1;2;3]; [4;5;6]; [7;8]]))
